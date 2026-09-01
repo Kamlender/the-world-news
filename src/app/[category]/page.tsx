@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   if (!cat) return { title: 'Category Not Found' };
   return {
     title: `${cat.name} News`,
-    description: cat.description || `Latest ${cat.name} news and updates on NewsHub.`,
+    description: cat.description || `Latest ${cat.name} news and updates on The World News.`,
   };
 }
 

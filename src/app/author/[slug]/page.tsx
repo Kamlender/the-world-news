@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
   if (!author) return { title: 'Author Not Found' };
   return {
     title: `Articles by ${author.name}`,
-    description: author.bio || `Read all articles by ${author.name} on NewsHub.`,
+    description: author.bio || `Read all articles by ${author.name} on The World News.`,
   };
 }
 

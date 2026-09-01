@@ -65,7 +65,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            &copy; {currentYear} NewsHub. All rights reserved.
+            &copy; {currentYear} The World News. All rights reserved.
           </p>
           <div className={styles.bottomLinks}>
             <Link href="/sitemap.xml" className={styles.bottomLink}>Sitemap</Link>
