@@ -8,6 +8,14 @@ import Footer from '@/components/public/Footer';
 import ArticleCard from '@/components/public/ArticleCard';
 import styles from './article.module.css';
 
+export async function generateStaticParams() {
+  const articles = await prisma.article.findMany({
+    where: { status: 'PUBLISHED' },
+    select: { slug: true, category: { select: { slug: true } } },
+  });
+  return articles.map((a) => ({ category: a.category.slug, slug: a.slug }));
+}
+
 interface ArticlePageProps {
   params: Promise<{ category: string; slug: string }>;
 }

@@ -8,8 +8,7 @@ import FeaturedStory from '@/components/public/FeaturedStory';
 import ArticleCard from '@/components/public/ArticleCard';
 import styles from './homepage.module.css';
 
-// Revalidate homepage every 60 seconds
-export const revalidate = 60;
+
 
 async function getHomepageData() {
   // Breaking news articles

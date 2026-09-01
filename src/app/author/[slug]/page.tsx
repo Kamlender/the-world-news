@@ -7,6 +7,11 @@ import Footer from '@/components/public/Footer';
 import ArticleCard from '@/components/public/ArticleCard';
 import styles from '../../listing.module.css';
 
+export async function generateStaticParams() {
+  const authors = await prisma.author.findMany({ select: { slug: true } });
+  return authors.map((a) => ({ slug: a.slug }));
+}
+
 interface AuthorPageProps {
   params: Promise<{ slug: string }>;
 }

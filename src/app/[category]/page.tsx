@@ -7,6 +7,14 @@ import Footer from '@/components/public/Footer';
 import ArticleCard from '@/components/public/ArticleCard';
 import styles from '../listing.module.css';
 
+export async function generateStaticParams() {
+  const categories = await prisma.category.findMany({
+    where: { status: 'ACTIVE' },
+    select: { slug: true },
+  });
+  return categories.map((c) => ({ category: c.slug }));
+}
+
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
 }
