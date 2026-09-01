@@ -1,0 +1,20 @@
+/* Category & Author Page Styles */
+.page { max-width: var(--max-width); margin: 0 auto; padding: var(--space-6) var(--space-4); }
+@media (min-width: 768px) { .page { padding: var(--space-8) var(--space-6); } }
+.pageHeader { margin-bottom: var(--space-8); }
+.pageTitle { font-family: var(--font-serif); font-size: var(--text-3xl); font-weight: var(--font-black); color: var(--color-text-primary); margin-bottom: var(--space-2); }
+@media (min-width: 768px) { .pageTitle { font-size: var(--text-4xl); } }
+.pageDesc { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); max-width: 600px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+.noResults { text-align: center; padding: var(--space-16) 0; color: var(--color-text-tertiary); font-size: var(--text-lg); }
+.authorHeader { display: flex; align-items: center; gap: var(--space-6); margin-bottom: var(--space-8); }
+.authorAvatar { width: 80px; height: 80px; border-radius: var(--radius-full); background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-size: var(--text-2xl); font-weight: var(--font-bold); flex-shrink: 0; }
+@media (min-width: 768px) { .authorAvatar { width: 100px; height: 100px; font-size: var(--text-3xl); } }
+.authorInfo { flex: 1; }
+.authorBio { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-top: var(--space-2); max-width: 500px; }
+.articleCount { font-size: var(--text-sm); color: var(--color-text-tertiary); margin-top: var(--space-1); }
+.breadcrumb { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-tertiary); margin-bottom: var(--space-6); }
+.breadcrumbLink { color: var(--color-text-secondary); text-decoration: none; }
+.breadcrumbLink:hover { color: var(--color-accent); }
