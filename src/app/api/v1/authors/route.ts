@@ -12,12 +12,12 @@ export async function POST(request: NextRequest) {
   const user = await getAuthUser();
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const { name, email, bio, avatarUrl } = await request.json();
-  if (!name || !email) return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 });
+  const { name, bio, avatarUrl } = await request.json();
+  if (!name) return NextResponse.json({ error: 'Name is required.' }, { status: 400 });
 
   const slug = generateSlug(name);
   const author = await prisma.author.create({
-    data: { name, slug, email, bio: bio || null, avatarUrl: avatarUrl || null },
+    data: { name, slug, bio: bio || null, profileImage: avatarUrl || null },
   });
 
   return NextResponse.json({ author }, { status: 201 });
