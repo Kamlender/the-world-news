@@ -29,7 +29,7 @@ export default function Header() {
       <div className={styles.topBar}>
         <Link href="/" className={styles.logo} id="logo-link">
           <span className={styles.logoText}>
-            News<span className={styles.logoAccent}>Hub</span>
+            The <span className={styles.logoAccent}>World</span> News
           </span>
         </Link>
 

@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Brand */}
           <div className={styles.brand}>
             <div className={styles.brandLogo}>
-              News<span className={styles.brandLogoAccent}>Hub</span>
+              The <span className={styles.brandLogoAccent}>World</span> News
             </div>
             <p className={styles.brandDesc}>
               Fast, trustworthy news — discover what matters. We bring you accurate, 
