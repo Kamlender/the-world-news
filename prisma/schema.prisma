@@ -1,0 +1,230 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Using SQLite for local development
+// Switch to PostgreSQL for production:
+// provider = "postgresql"
+// url = env("DATABASE_URL")
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ============================================
+// USER MANAGEMENT (Admin/Editor accounts)
+// ============================================
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  name         String
+  role         String   @default("EDITOR") // ADMIN | EDITOR
+  status       String   @default("ACTIVE") // ACTIVE | INACTIVE
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  revisions ArticleRevision[]
+  auditLogs AuditLog[]
+
+  @@map("users")
+}
+
+// ============================================
+// AUTHORS (Article writers / journalists)
+// ============================================
+
+model Author {
+  id           String   @id @default(cuid())
+  name         String
+  slug         String   @unique
+  profileImage String?  @map("profile_image")
+  bio          String?
+  status       String   @default("ACTIVE") // ACTIVE | INACTIVE
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  articles Article[]
+
+  @@map("authors")
+}
+
+// ============================================
+// CATEGORIES (India, World, Business, etc.)
+// ============================================
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  sortOrder   Int      @default(0) @map("sort_order")
+  status      String   @default("ACTIVE") // ACTIVE | INACTIVE
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  articles Article[]
+
+  @@map("categories")
+}
+
+// ============================================
+// ARTICLES (Core content)
+// ============================================
+
+model Article {
+  id            String    @id @default(cuid())
+  title         String
+  slug          String    @unique
+  excerpt       String?
+  content       String // Rich text HTML content
+  featuredImage String?   @map("featured_image")
+  imageAlt      String?   @map("image_alt")
+  authorId      String    @map("author_id")
+  categoryId    String    @map("category_id")
+  language      String    @default("en") // en, hi, hinglish, etc.
+  status        String    @default("DRAFT") // DRAFT | PUBLISHED | UNPUBLISHED
+  isBreaking    Boolean   @default(false) @map("is_breaking")
+  isFeatured    Boolean   @default(false) @map("is_featured")
+  publishedAt   DateTime? @map("published_at")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  author    Author           @relation(fields: [authorId], references: [id])
+  category  Category         @relation(fields: [categoryId], references: [id])
+  sources   Source[]
+  tags      ArticleTag[]
+  seo       ArticleSeo?
+  revisions ArticleRevision[]
+
+  @@index([status])
+  @@index([categoryId])
+  @@index([authorId])
+  @@index([isBreaking])
+  @@index([isFeatured])
+  @@index([publishedAt])
+  @@index([language])
+  @@map("articles")
+}
+
+// ============================================
+// SOURCES (Article references / attribution)
+// ============================================
+
+model Source {
+  id         String   @id @default(cuid())
+  articleId  String   @map("article_id")
+  name       String
+  url        String?
+  sourceType String   @map("source_type")
+  // GOVERNMENT_RELEASE | OFFICIAL_STATEMENT | COURT_DOCUMENT
+  // PRESS_CONFERENCE | NEWS_AGENCY | ORIGINAL_REPORTING | OTHER
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  // Relations
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@index([articleId])
+  @@map("sources")
+}
+
+// ============================================
+// TAGS
+// ============================================
+
+model Tag {
+  id   String @id @default(cuid())
+  name String
+  slug String @unique
+
+  // Relations
+  articles ArticleTag[]
+
+  @@map("tags")
+}
+
+model ArticleTag {
+  id        String @id @default(cuid())
+  articleId String @map("article_id")
+  tagId     String @map("tag_id")
+
+  // Relations
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, tagId])
+  @@index([articleId])
+  @@index([tagId])
+  @@map("article_tags")
+}
+
+// ============================================
+// ARTICLE SEO METADATA
+// ============================================
+
+model ArticleSeo {
+  id              String  @id @default(cuid())
+  articleId       String  @unique @map("article_id")
+  seoTitle        String? @map("seo_title")
+  metaDescription String? @map("meta_description")
+  canonicalUrl    String? @map("canonical_url")
+  ogTitle         String? @map("og_title")
+  ogDescription   String? @map("og_description")
+  ogImage         String? @map("og_image")
+
+  // Relations
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@map("article_seo")
+}
+
+// ============================================
+// ARTICLE REVISIONS (Edit history)
+// ============================================
+
+model ArticleRevision {
+  id           String   @id @default(cuid())
+  articleId    String   @map("article_id")
+  editorId     String   @map("editor_id")
+  title        String
+  content      String
+  revisionNote String?  @map("revision_note")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relations
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  editor  User    @relation(fields: [editorId], references: [id])
+
+  @@index([articleId])
+  @@map("article_revisions")
+}
+
+// ============================================
+// AUDIT LOGS (Track admin/editor actions)
+// ============================================
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String   @map("user_id")
+  action     String // LOGIN | ARTICLE_CREATED | ARTICLE_PUBLISHED | etc.
+  entityType String?  @map("entity_type")
+  entityId   String?  @map("entity_id")
+  metadata   String? // JSON string for additional data
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

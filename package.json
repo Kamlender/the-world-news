@@ -1,17 +1,28 @@
 {
-  "name": "newshub-temp",
+  "name": "newshub",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "npx tsx prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "bcryptjs": "^3.0.3",
+    "dompurify": "^3.4.14",
+    "isomorphic-dompurify": "^3.23.0",
+    "jsonwebtoken": "^9.0.3",
     "next": "16.3.4",
+    "prisma": "^6.19.3",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "slugify": "^1.6.9"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -19,6 +30,12 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "tsx": "^4.23.13",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "prisma@6.19.3": true,
+    "@prisma/client@6.19.3": true,
+    "@prisma/engines@6.19.3": true
   }
 }
