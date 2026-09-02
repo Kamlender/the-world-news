@@ -17,6 +17,27 @@ const LANGUAGES = [
   { code: 'en', label: 'English' },
   { code: 'hi', label: 'Hindi' },
   { code: 'hinglish', label: 'Hinglish' },
+  { code: 'bn', label: 'Bengali' },
+  { code: 'te', label: 'Telugu' },
+  { code: 'mr', label: 'Marathi' },
+  { code: 'ta', label: 'Tamil' },
+  { code: 'ur', label: 'Urdu' },
+  { code: 'gu', label: 'Gujarati' },
+  { code: 'kn', label: 'Kannada' },
+  { code: 'ml', label: 'Malayalam' },
+  { code: 'or', label: 'Odia' },
+  { code: 'pa', label: 'Punjabi' },
+  { code: 'as', label: 'Assamese' },
+  { code: 'mai', label: 'Maithili' },
+  { code: 'sat', label: 'Santali' },
+  { code: 'ks', label: 'Kashmiri' },
+  { code: 'ne', label: 'Nepali' },
+  { code: 'sd', label: 'Sindhi' },
+  { code: 'kok', label: 'Konkani' },
+  { code: 'doi', label: 'Dogri' },
+  { code: 'mni', label: 'Manipuri' },
+  { code: 'brx', label: 'Bodo' },
+  { code: 'sa', label: 'Sanskrit' }
 ];
 
 export default function Header() {
