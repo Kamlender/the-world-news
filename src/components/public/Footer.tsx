@@ -67,6 +67,9 @@ export default function Footer() {
           <p className={styles.copyright}>
             &copy; {currentYear} The World News. All rights reserved.
           </p>
+          <p className={styles.credit}>
+            Designed &amp; built by <span className={styles.creditStudio}>ZYROO STUDIO</span>
+          </p>
           <div className={styles.bottomLinks}>
             <Link href="/sitemap.xml" className={styles.bottomLink}>Sitemap</Link>
             <Link href="/rss" className={styles.bottomLink}>RSS Feed</Link>
