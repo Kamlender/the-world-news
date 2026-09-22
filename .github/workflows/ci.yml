@@ -3,6 +3,8 @@ name: Deploy Next.js to GitHub Pages
 on:
   push:
     branches: ["main"]
+  schedule:
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 
 permissions:
@@ -40,6 +42,9 @@ jobs:
 
       - name: Seed Database
         run: npx prisma db push --force-reset && npx tsx prisma/seed.ts
+
+      - name: Fetch Automated News
+        run: npm run fetch-news
 
       - name: Build with Next.js
         run: npm run build

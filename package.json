@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "npx tsx prisma/seed.ts"
+    "seed": "npx tsx prisma/seed.ts",
+    "fetch-news": "npx tsx prisma/fetch-news.ts"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
@@ -15,6 +16,7 @@
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "bcryptjs": "^3.0.3",
+    "cheerio": "^1.2.0",
     "dompurify": "^3.4.14",
     "isomorphic-dompurify": "^3.23.0",
     "jsonwebtoken": "^9.0.3",
@@ -22,6 +24,7 @@
     "prisma": "^6.19.3",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "rss-parser": "^3.13.0",
     "slugify": "^1.6.9"
   },
   "devDependencies": {
