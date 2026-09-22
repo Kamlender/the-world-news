@@ -116,6 +116,15 @@
   letter-spacing: 0.02em;
 }
 
+.creditStudioLink {
+  text-decoration: none;
+}
+
+.creditStudioLink:hover .creditStudio {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .creditStudio {
   color: rgba(255, 255, 255, 0.55);
   font-weight: 600;

@@ -70,7 +70,10 @@ export default function Footer() {
             &copy; {currentYear} The World News. All rights reserved.
           </p>
           <p className={styles.credit}>
-            Designed &amp; built by <span className={styles.creditStudio}>ZYROO STUDIO</span>
+            Designed &amp; built by{' '}
+            <a href="https://tinytoono.in" target="_blank" rel="noopener noreferrer" className={styles.creditStudioLink}>
+              <span className={styles.creditStudio}>ZYROO STUDIO</span>
+            </a>
           </p>
           <div className={styles.bottomLinks}>
             <Link href="/sitemap.xml" className={styles.bottomLink}>Sitemap</Link>
