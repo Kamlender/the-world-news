@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Brand */}
           <div className={styles.brand}>
             <img
-              src="/logo-transparent.png"
+              src="/logo-footer.png"
               alt="The World News"
               className={styles.brandLogoImg}
             />
