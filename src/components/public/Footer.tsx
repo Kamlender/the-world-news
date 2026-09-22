@@ -25,7 +25,7 @@ export default function Footer() {
               className={styles.brandLogoImg}
             />
             <p className={styles.brandDesc}>
-              Fast, trustworthy news — discover what matters. We bring you accurate, 
+              Fast, trustworthy news discover what matters. We bring you accurate, 
               well-sourced journalism with editorial accountability at the core.
             </p>
           </div>
