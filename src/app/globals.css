@@ -185,7 +185,6 @@ p {
   overflow-wrap: break-word;
 }
 
-@import 'tailwindcss';
 
 /* ---- Google Translate overrides ---- */
 body > .skiptranslate {
