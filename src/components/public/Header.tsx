@@ -67,7 +67,7 @@ export default function Header() {
       <div className={styles.topBar}>
         <Link href="/" className={styles.logo} id="logo-link">
           <img
-            src="/logo.png"
+            src="/logo-transparent.png"
             alt="The World News"
             className={styles.logoImg}
           />
@@ -78,7 +78,7 @@ export default function Header() {
 
 
           {/* Language Selector */}
-          <div className={styles.langWrapper}>
+          <div className={`${styles.langWrapper} notranslate`}>
             <button
               className={styles.langBtn}
               onClick={() => setLangDropdown(!langDropdown)}

@@ -45,10 +45,12 @@
 }
 
 .brandLogoImg {
-  height: 80px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   margin-bottom: var(--space-4);
+  transform: scale(1.5);
+  transform-origin: left center;
 }
 
 .brandDesc {

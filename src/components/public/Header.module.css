@@ -36,14 +36,17 @@
 }
 
 .logoImg {
-  height: 60px;
+  height: 40px;
   width: auto;
   object-fit: contain;
+  transform: scale(1.7);
+  transform-origin: left center;
 }
 
 @media (min-width: 768px) {
   .logoImg {
-    height: 80px;
+    height: 48px;
+    transform: scale(1.7);
   }
 }
 
@@ -141,15 +144,19 @@
 
 .langDropdown {
   position: absolute;
-  top: calc(100% + 6px);
+  top: 100%;
   right: 0;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border-light);
+  margin-top: var(--space-2);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
-  min-width: 140px;
-  z-index: 100;
-  overflow: hidden;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  z-index: var(--z-dropdown);
+  overflow-y: auto;
+  max-height: 300px;
   animation: fadeSlideDown 0.15s ease-out;
 }
 
