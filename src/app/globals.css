@@ -185,6 +185,19 @@ p {
   overflow-wrap: break-word;
 }
 
+@import 'tailwindcss';
+
+/* ---- Google Translate overrides ---- */
+body > .skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important; 
+}
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
 /* ============================================
    Layout Utilities
    ============================================ */

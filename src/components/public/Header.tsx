@@ -94,7 +94,20 @@ export default function Header() {
                   <button
                     key={lang.code}
                     className={`${styles.langOption} ${currentLang === lang.code ? styles.langOptionActive : ''}`}
-                    onClick={() => { setCurrentLang(lang.code); setLangDropdown(false); }}
+                    onClick={() => {
+                      setCurrentLang(lang.code);
+                      setLangDropdown(false);
+                      // Google Translate Trigger
+                      try {
+                        const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+                        if (select) {
+                          select.value = lang.code;
+                          select.dispatchEvent(new Event('change'));
+                        }
+                      } catch (e) {
+                        console.error('Google Translate error', e);
+                      }
+                    }}
                   >
                     {lang.label}
                   </button>

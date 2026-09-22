@@ -45,16 +45,10 @@
 }
 
 .brandLogoImg {
-  height: 40px;
+  height: 80px;
   width: auto;
   object-fit: contain;
   margin-bottom: var(--space-4);
-  /* Add brightness filter since the footer has a dark background 
-     but the logo text might be dark. In CSS, we can invert or adjust brightness if needed,
-     but for now we just size it correctly. */
-  background: white; /* Optional: if the logo needs a white background to be visible on dark footer */
-  padding: 4px;
-  border-radius: 4px;
 }
 
 .brandDesc {
