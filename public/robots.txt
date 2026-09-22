@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://kamlender.github.io/the-world-news/sitemap.xml
+Sitemap: https://theworldnews.app/sitemap.xml

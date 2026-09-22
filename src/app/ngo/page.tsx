@@ -2,8 +2,8 @@ import Header from '@/components/public/Header';
 import Footer from '@/components/public/Footer';
 
 export const metadata = {
-  title: 'NGO - The World News',
-  description: 'Support and discover NGOs making a difference. The World News highlights organizations working for social change.',
+  title: 'NGO Directory — Verified Social Organizations & Charities',
+  description: 'Discover verified NGOs and social organizations making a real difference in India and around the world. The World News highlights charities, nonprofits, and community initiatives working for positive social change.',
 };
 
 export default function NGOPage() {
@@ -18,16 +18,34 @@ export default function NGOPage() {
           marginBottom: '1rem',
           color: 'var(--color-text-primary)',
         }}>
-          NGO
+          NGO Directory
         </h1>
         <p style={{
           fontSize: '1.125rem',
           color: 'var(--color-text-secondary)',
           lineHeight: 1.7,
           maxWidth: '700px',
+          marginBottom: '1.5rem',
+        }}>
+          We believe in the power of community and giving back. This section is dedicated to highlighting NGOs and social organizations making a real difference in India and around the world. From education and healthcare to environmental conservation and disaster relief, these organizations represent the best of human compassion and collective action.
+        </p>
+        <p style={{
+          fontSize: '1rem',
+          color: 'var(--color-text-secondary)',
+          lineHeight: 1.7,
+          maxWidth: '700px',
+          marginBottom: '1.5rem',
+        }}>
+          The World News is committed to shining a spotlight on nonprofits, charities, and grassroots initiatives that drive meaningful social impact. Our editorial team carefully verifies each organization before featuring them, ensuring transparency, accountability, and genuine community benefit. Whether you are looking to volunteer, donate, or simply learn about the incredible work being done by civil society, this directory is your trusted starting point.
+        </p>
+        <p style={{
+          fontSize: '1rem',
+          color: 'var(--color-text-secondary)',
+          lineHeight: 1.7,
+          maxWidth: '700px',
           marginBottom: '2rem',
         }}>
-          We believe in the power of community and giving back. This section is dedicated to highlighting NGOs and social organizations making a real difference in India and around the world.
+          If you represent an NGO and would like to be featured, please reach out through our contact page. We welcome applications from organizations working in fields such as women&apos;s empowerment, child welfare, rural development, clean water access, mental health awareness, disability rights, animal welfare, and sustainable agriculture.
         </p>
         <div style={{
           padding: '3rem',
@@ -40,7 +58,7 @@ export default function NGOPage() {
             Coming Soon
           </p>
           <p style={{ color: 'var(--color-text-tertiary)' }}>
-            We are curating a list of verified NGOs. Stay tuned for updates.
+            We are curating a list of verified NGOs and social organizations. Stay tuned for updates.
           </p>
         </div>
       </main>
@@ -48,3 +66,4 @@ export default function NGOPage() {
     </>
   );
 }
+

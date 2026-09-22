@@ -59,21 +59,16 @@ export default function Header() {
       {/* Top Bar: Logo + Actions */}
       <div className={styles.topBar}>
         <Link href="/" className={styles.logo} id="logo-link">
-          <span className={styles.logoText}>
-            The <span className={styles.logoAccent}>World</span> News
-          </span>
+          <img
+            src="/logo.png"
+            alt="The World News"
+            className={styles.logoImg}
+          />
         </Link>
 
         <div className={styles.headerActions}>
           <span className={styles.dateStrip}>{today}</span>
 
-          {/* NGO Button */}
-          <Link href="/ngo" className={styles.ngoBtn} id="ngo-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </svg>
-            <span className={styles.ngoBtnText}>NGO</span>
-          </Link>
 
           {/* Language Selector */}
           <div className={styles.langWrapper}>
@@ -178,9 +173,7 @@ export default function Header() {
                 {cat.name}
               </Link>
             ))}
-            <Link href="/ngo" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>
-              NGO
-            </Link>
+
           </nav>
         </div>
       </div>

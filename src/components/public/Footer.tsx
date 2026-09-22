@@ -19,9 +19,11 @@ export default function Footer() {
         <div className={styles.footerGrid}>
           {/* Brand */}
           <div className={styles.brand}>
-            <div className={styles.brandLogo}>
-              The <span className={styles.brandLogoAccent}>World</span> News
-            </div>
+            <img
+              src="/logo.png"
+              alt="The World News"
+              className={styles.brandLogoImg}
+            />
             <p className={styles.brandDesc}>
               Fast, trustworthy news — discover what matters. We bring you accurate, 
               well-sourced journalism with editorial accountability at the core.

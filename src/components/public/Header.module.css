@@ -32,26 +32,19 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
   text-decoration: none;
 }
 
-.logoText {
-  font-family: var(--font-serif);
-  font-size: var(--text-2xl);
-  font-weight: var(--font-black);
-  color: var(--color-primary);
-  letter-spacing: -0.02em;
+.logoImg {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
-  .logoText {
-    font-size: var(--text-3xl);
+  .logoImg {
+    height: 48px;
   }
-}
-
-.logoAccent {
-  color: var(--color-text-primary);
 }
 
 .headerActions {

@@ -33,6 +33,9 @@ export default function FeaturedStory({ article }: FeaturedStoryProps) {
             src={article.featuredImage}
             alt={article.title}
             className={styles.heroImage}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         ) : (
           <div className={styles.heroPlaceholder} />

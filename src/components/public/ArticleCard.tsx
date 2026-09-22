@@ -44,6 +44,7 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
             alt={article.title}
             className={styles.image}
             loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className={styles.imagePlaceholder}>

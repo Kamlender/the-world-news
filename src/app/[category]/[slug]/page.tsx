@@ -54,13 +54,15 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   if (!article) return { title: 'Article Not Found' };
 
   const description = article.seo?.metaDescription || article.excerpt || generateExcerpt(article.content, 160);
-  const title = article.seo?.seoTitle || article.title;
+  const rawTitle = article.seo?.seoTitle || article.title;
+  // Truncate title to ~42 chars so total with " | The World News" (18 chars) stays under 60
+  const title = rawTitle.length > 42 ? rawTitle.substring(0, 39) + '...' : rawTitle;
 
   return {
     title,
     description,
     openGraph: {
-      title: article.seo?.ogTitle || title,
+      title: article.seo?.ogTitle || article.title, // OG title can be longer
       description: article.seo?.ogDescription || description,
       type: 'article',
       publishedTime: article.publishedAt?.toISOString(),
@@ -70,7 +72,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     },
     twitter: {
       card: 'summary_large_image',
-      title: article.seo?.ogTitle || title,
+      title: article.seo?.ogTitle || article.title, // Twitter title can be longer
       description: article.seo?.ogDescription || description,
     },
   };
@@ -158,6 +160,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 src={article.featuredImage}
                 alt={article.imageAlt || article.title}
                 className={styles.featuredImg}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           )}
