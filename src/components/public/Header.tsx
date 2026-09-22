@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Header.module.css';
 
 const CATEGORIES = [
@@ -44,6 +44,13 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdown, setLangDropdown] = useState(false);
   const [currentLang, setCurrentLang] = useState('en');
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem('preferredLang');
+    if (savedLang) {
+      setCurrentLang(savedLang);
+    }
+  }, []);
 
   const today = new Date().toLocaleDateString('en-IN', {
     weekday: 'long',
@@ -97,6 +104,7 @@ export default function Header() {
                     onClick={() => {
                       setCurrentLang(lang.code);
                       setLangDropdown(false);
+                      localStorage.setItem('preferredLang', lang.code);
                       // Google Translate Trigger
                       try {
                         const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
